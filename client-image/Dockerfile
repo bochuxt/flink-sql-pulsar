@@ -16,7 +16,8 @@
 # limitations under the License.
 ###############################################################################
 
-FROM flink:1.12.0-scala_2.11
+FROM arm64v8/flink:1.14-scala_2.11-java11
+#flink:1.12.0-scala_2.11
 
 # Copy sql-client script
 COPY sql-client/ /opt/sql-client
@@ -26,7 +27,8 @@ RUN mkdir -p /opt/sql-client/lib
 RUN wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-json/1.12.0/flink-json-1.12.0.jar; \
 	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-avro/1.12.0/flink-sql-avro-1.12.0.jar; \
 	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/avro/avro/1.10.0/avro-1.10.0.jar; \
-    wget -P /opt/sql-client/lib/ https://dl.bintray.com/streamnative/maven/io/streamnative/connectors/pulsar-flink-connector-2.11-1.12/2.7.0/pulsar-flink-connector-2.11-1.12-2.7.0.jar;
+    wget -P /opt/sql-client/lib/ https://repo1.maven.org/maven2/io/streamnative/connectors/pulsar-flink-connector_2.11/2.4.28.7/pulsar-flink-connector_2.11-2.4.28.7.jar
+	#https://dl.bintray.com/streamnative/maven/io/streamnative/connectors/pulsar-flink-connector-2.11-1.12/2.7.0/pulsar-flink-connector-2.11-1.12-2.7.0.jar;
 
 # Copy configuration
 COPY conf/* /opt/flink/conf/

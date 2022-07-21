@@ -24,12 +24,13 @@ COPY sql-client/ /opt/sql-client
 RUN mkdir -p /opt/sql-client/lib
 
 # Download connector libraries
-RUN wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-json/1.12.0/flink-json-1.12.0.jar; \
-	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-avro/1.12.0/flink-sql-avro-1.12.0.jar; \
-	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/avro/avro/1.10.0/avro-1.10.0.jar; \
-    wget -P /opt/sql-client/lib/ https://repo1.maven.org/maven2/io/streamnative/connectors/pulsar-flink-connector_2.11/2.4.28.7/pulsar-flink-connector_2.11-2.4.28.7.jar
+# RUN wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-json/1.12.0/flink-json-1.12.0.jar; \
+# 	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-avro/1.12.0/flink-sql-avro-1.12.0.jar; \
+# 	wget -P /opt/sql-client/lib/ https://repo.maven.apache.org/maven2/org/apache/avro/avro/1.10.0/avro-1.10.0.jar; \
+#     wget -P /opt/sql-client/lib/ https://repo1.maven.org/maven2/io/streamnative/connectors/pulsar-flink-connector_2.11/2.4.28.7/pulsar-flink-connector_2.11-2.4.28.7.jar --no-check-certificate
 	#https://dl.bintray.com/streamnative/maven/io/streamnative/connectors/pulsar-flink-connector-2.11-1.12/2.7.0/pulsar-flink-connector-2.11-1.12-2.7.0.jar;
 
+COPY lib/* /opt/sql-client/lib/
 # Copy configuration
 COPY conf/* /opt/flink/conf/
 
